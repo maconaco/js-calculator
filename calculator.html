@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+    <body>
+    <style>
+    button
+    {
+        width: 40px;
+    }
+    </style>
+        <div style="width: 240px; text-align: center; margin: 20px auto;">
+        <h1 style="font-size: 16px; margin-bottom: 16px;">calculator with JavaScript</h1>
+        <div style="text-align: left;">
+            <input style="font-size: 24px; text-align: right; margin-bottom: 16px;"/>
+            <script>
+                function update( _v )
+                {
+                    document.querySelector( 'input' ).value = _v
+                }
+
+                function append( _v )
+                {
+                    document.querySelector( 'input' ).value += _v
+                }
+
+                function calc()
+                {
+                    const v = document.querySelector( 'input' ).value
+                    try {
+                        const f = new Function( 'return ' + v )
+                        update( f().toString() )
+                    } catch( _error ) {
+                        update( _error )
+                    }
+                }
+            </script>
+            <div style="margin-left: 8px;">
+                <button onclick="append('1')" >1</button>
+                <button onclick="append('2')" >2</button>
+                <button onclick="append('3')" >3</button>
+                <button onclick="append('4')" >4</button>
+                <button onclick="append('5')" >5</button>
+                <button onclick="append('6')" >6</button>
+                <button onclick="append('7')" >7</button>
+                <button onclick="append('8')" >8</button>
+                <button onclick="append('.')" >.</button>
+                <button onclick="append('+')" >+</button>
+                <button onclick="append('-')" >-</button>
+                <button onclick="append('*')" >*</button>
+                <button onclick="append('/')" >/</button>
+                <button onclick="append('**')" >^</button>
+                <button onclick="append('**0.5')" >√</button>
+
+                <button onclick="calc()" >=</button>
+
+                <button onclick="update('')" >CLR</button>
+            </div>
+        </div>
+    </body>
+</html>
